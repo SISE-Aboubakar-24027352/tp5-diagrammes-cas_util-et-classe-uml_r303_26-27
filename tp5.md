@@ -39,6 +39,7 @@ Barriere "1" <-- "1" Capteur : associée à
 
 @enduml
 ```
+<img src="img/exo1.png">
 
 ## Ex. 2 Location de bungalows
 ```java
@@ -114,5 +115,6 @@ Bungalow "1" --> "0..*" Reparation : concerne
 
 @enduml
 ```
-     
-## Ex. 3 Logiciel d’inscription à l’I.U.T.
+<img src="img/exo2.png">
+
+## Ex. 3 Logiciel d’inscription à l’I.U.T.
