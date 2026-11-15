@@ -1,0 +1,71 @@
+@startuml
+
+class Client {
+    - nom : String
+    - prenom : String
+    - adresse : String
+    - telephone : String
+    - email : String
+}
+
+class Reservation {
+    - numeroReservation : int
+    - dateDebut : LocalDate
+    - dateFin : LocalDate
+    - nombreAdultes : int
+    - nombreEnfants : int
+    - montant : double
+}
+
+class Bungalow {
+    - numeroBungalow : int
+    - localisation : String
+    - statut : String
+}
+
+class TypeBungalow {
+    - codeType : int
+    - libelle : String
+    - capacite : int
+    - description : String
+}
+
+class Tarif {
+    - dateDebutValidite : LocalDate
+    - prixSemaine : double
+}
+
+class Paiement {
+    - numeroPaiement : int
+    - datePaiement : LocalDate
+    - montant : double
+    - modePaiement : String
+    - statut : String
+}
+
+class EtatDesLieux {
+    - numeroEtat : int
+    - dateEtat : LocalDate
+    - moment : String
+    - observations : String
+}
+
+class Reparation {
+    - numeroReparation : int
+    - dateDebut : LocalDate
+    - dateFin : LocalDate
+    - description : String
+    - cout : double
+    - statut : String
+}
+
+Client "1" --> "0..*" Reservation : effectue
+Reservation "0..*" --> "1" Bungalow : concerne
+TypeBungalow "1" --> "0..*" Bungalow : categorise
+TypeBungalow "1" --> "1..*" Tarif : possede
+Reservation "1" --> "0..*" Paiement : reglee par
+Bungalow "1" --> "0..*" EtatDesLieux : concerne
+Reservation "1" --> "2" EtatDesLieux : donne lieu a
+Bungalow "1" --> "0..*" Reparation : concerne
+
+@enduml

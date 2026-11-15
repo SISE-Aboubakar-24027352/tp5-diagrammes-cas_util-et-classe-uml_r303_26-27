@@ -1,0 +1,37 @@
+@startuml
+
+class LigneFerroviaire {
+    - id : int
+}
+
+class Gare {
+    - id : int
+    - nom : String
+}
+
+class Train {
+    - id : int
+    + setDepart(gare : Gare) : void
+    + setArrivee(gare : Gare) : void
+}
+
+class Capteur {
+    - id : int
+    - mouvementDetecte : boolean
+}
+
+class Barriere {
+    - id : int
+    - estOuverte : boolean
+}
+
+
+Gare "2..*" o--- "1..*" LigneFerroviaire : traverse
+Train "0..*" --> "1" Gare : gareOrigine
+Train "0..*" --> "1" Gare : gareArrivee
+Train "0..*" ...> "1..*" LigneFerroviaire : utilise
+LigneFerroviaire "1" *-- "1..*" Capteur : possède
+LigneFerroviaire "1" *-- "0..*" Barriere : possède
+Barriere "1" <-- "1" Capteur : associée à
+
+@enduml
